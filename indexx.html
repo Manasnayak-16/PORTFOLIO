@@ -115,7 +115,7 @@
 <body>
   <div class="container">
     <h1>Manas Nayak</h1>
-    <img src="profile.jpg" alt="Manas Nayak Profile Picture" class="profile-pic" />
+    <img src="./profile.jpg" alt="Manas Nayak Profile Picture" class="profile-pic" />
 
     <nav>
       <a href="#about">About</a>
@@ -158,19 +158,19 @@
       <div class="certificate-item">
         <h3>Reuse and Remodel Product Development (Mechanical Dept., SRM University)</h3>
         <p>Certificate awarded for successful completion of project on reuse and remodeling products.</p>
-        <a href="remodel-certificate1.pdf" target="_blank" rel="noopener noreferrer" class="pdf-link">View Remodel Certificate 1 (PDF)</a>
+        <a href="./remodel-certificate1.pdf" target="_blank" rel="noopener noreferrer" class="pdf-link">View Remodel Certificate 1 (PDF)</a>
       </div>
       
       <div class="certificate-item">
         <h3>Reuse and Remodel Product Development - Workshop Participation</h3>
         <p>Participation certificate for the mechanical workshop on reuse and remodeling.</p>
-        <a href="remodel-certificate2.pdf" target="_blank" rel="noopener noreferrer" class="pdf-link">View Remodel Certificate 2 (PDF)</a>
+        <a href="./remodel-certificate2.pdf" target="_blank" rel="noopener noreferrer" class="pdf-link">View Remodel Certificate 2 (PDF)</a>
       </div>
 
       <div class="certificate-item">
         <h3>100 Days of Code: Python Bootcamp (Udemy)</h3>
         <p>Completed an intensive Python programming bootcamp focusing on practical coding skills.</p>
-        <a href="python-certificate.pdf" target="_blank" rel="noopener noreferrer" class="pdf-link">View Python Certificate (PDF)</a>
+        <a href="./python-certificate.pdf" target="_blank" rel="noopener noreferrer" class="pdf-link">View Python Certificate (PDF)</a>
       </div>
     </section>
 
@@ -197,5 +197,21 @@
       <p>LinkedIn: <a href="https://www.linkedin.com/in/manas-nayak-ab2a86360" target="_blank" rel="noopener noreferrer">linkedin.com/in/manas-nayak-ab2a86360</a></p>
     </section>
   </div>
+
+  <script>
+    // Dark Mode Toggle
+    const toggle = document.getElementById("darkModeToggle");
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      toggle.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
+      localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+    });
+
+    // Load saved preference
+    if (localStorage.getItem("darkMode") === "true") {
+      document.body.classList.add("dark-mode");
+      toggle.textContent = "☀️ Light Mode";
+    }
+  </script>
 </body>
 </html>
