@@ -4,7 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Manas Nayak - Portfolio</title>
+  <link rel="icon" href="data:,"> <!-- Prevents favicon 404 errors -->
   <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --primary-color: #0077b6;
+      --container-bg: #fff;
+    }
+    .dark-mode {
+      --bg-color: #1a1a1a;
+      --text-color: #f0f0f0;
+      --primary-color: #bb86fc;
+      --container-bg: #2d2d2d;
+    }
     * {
       margin: 0;
       padding: 0;
@@ -13,18 +26,20 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-      color: #222;
+      color: var(--text-color);
       line-height: 1.6;
       min-height: 100vh;
       padding: 2rem;
+      transition: all 0.3s ease;
     }
     .container {
       max-width: 900px;
       margin: 0 auto;
-      background: #fff;
+      background: var(--container-bg);
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
       padding: 2.5rem 3rem;
+      transition: all 0.3s ease;
     }
     .profile-pic {
       display: block;
@@ -33,12 +48,12 @@
       height: 160px;
       object-fit: cover;
       border-radius: 50%;
-      border: 4px solid #0077b6;
+      border: 4px solid var(--primary-color);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
     h1 {
       text-align: center;
-      color: #0077b6;
+      color: var(--primary-color);
       margin-bottom: 1rem;
       font-size: 2.8rem;
       font-weight: 700;
@@ -46,22 +61,23 @@
     nav {
       display: flex;
       justify-content: center;
-      gap: 2.5rem;
+      gap: 1.5rem;
       margin-bottom: 2.5rem;
-      border-bottom: 2px solid #0077b6;
+      border-bottom: 2px solid var(--primary-color);
       padding-bottom: 0.5rem;
+      flex-wrap: wrap;
     }
     nav a {
       text-decoration: none;
-      color: #0077b6;
+      color: var(--primary-color);
       font-weight: 600;
       font-size: 1.1rem;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
+      padding: 0.3rem 0;
     }
     nav a:hover {
       color: #023e8a;
       border-bottom: 2px solid #023e8a;
-      padding-bottom: 2px;
     }
     #darkModeToggle {
       background: none;
@@ -70,31 +86,32 @@
       cursor: pointer;
       color: var(--primary-color);
       font-weight: 600;
+      padding: 0.3rem 0;
     }
     section {
       margin-bottom: 3rem;
     }
     section h2 {
-      color: #023e8a;
+      color: var(--primary-color);
       font-size: 1.8rem;
       margin-bottom: 1rem;
-      border-left: 6px solid #0077b6;
+      border-left: 6px solid var(--primary-color);
       padding-left: 0.8rem;
     }
     p, ul {
       font-size: 1rem;
-      color: #444;
+      color: var(--text-color);
+      margin-bottom: 0.8rem;
     }
     ul {
       list-style-type: square;
       padding-left: 1.3rem;
-      margin-top: 0.5rem;
     }
     a.pdf-link {
       display: inline-block;
       margin-top: 0.4rem;
       font-weight: 600;
-      color: #0077b6;
+      color: var(--primary-color);
       text-decoration: underline;
       cursor: pointer;
       transition: color 0.3s ease;
@@ -111,10 +128,16 @@
         padding: 1rem;
       }
       .container {
-        padding: 1.5rem 1.8rem;
+        padding: 1.5rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .profile-pic {
+        width: 120px;
+        height: 120px;
       }
       nav {
-        flex-direction: column;
         gap: 1rem;
       }
     }
@@ -133,6 +156,7 @@
       <a href="#achievements">Achievements</a>
       <a href="#hobbies">Hobbies</a>
       <a href="#contact">Contact</a>
+      <button id="darkModeToggle">🌙 Dark Mode</button>
     </nav>
 
     <section id="about">
@@ -209,17 +233,30 @@
   <script>
     // Dark Mode Toggle
     const toggle = document.getElementById("darkModeToggle");
-    toggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      toggle.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
-      localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
-    });
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        const isDark = document.body.classList.contains("dark-mode");
+        toggle.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+        localStorage.setItem("darkMode", isDark);
+      });
 
-    // Load saved preference
-    if (localStorage.getItem("darkMode") === "true") {
-      document.body.classList.add("dark-mode");
-      toggle.textContent = "☀️ Light Mode";
+      // Load saved preference
+      if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+        toggle.textContent = "☀️ Light Mode";
+      }
     }
+
+    // Error checking for images
+    window.addEventListener('load', function() {
+      document.querySelectorAll('img').forEach(img => {
+        if (!img.complete || img.naturalWidth === 0) {
+          console.error('Image failed to load:', img.src);
+          img.alt = 'Failed to load image'; // Fallback text
+        }
+      });
+    });
   </script>
 </body>
 </html>
