@@ -4,8 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Manas Nayak - Portfolio</title>
-  <link rel="icon" href="data:,"> <!-- Prevents favicon 404 errors -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     :root {
       --bg-color: #ffffff;
       --text-color: #333333;
@@ -17,11 +22,6 @@
       --text-color: #f0f0f0;
       --primary-color: #bb86fc;
       --container-bg: #2d2d2d;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -61,7 +61,7 @@
     nav {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 2.5rem;
       margin-bottom: 2.5rem;
       border-bottom: 2px solid var(--primary-color);
       padding-bottom: 0.5rem;
@@ -72,12 +72,12 @@
       color: var(--primary-color);
       font-weight: 600;
       font-size: 1.1rem;
-      transition: all 0.3s ease;
-      padding: 0.3rem 0;
+      transition: color 0.3s ease;
     }
     nav a:hover {
       color: #023e8a;
       border-bottom: 2px solid #023e8a;
+      padding-bottom: 2px;
     }
     #darkModeToggle {
       background: none;
@@ -86,7 +86,6 @@
       cursor: pointer;
       color: var(--primary-color);
       font-weight: 600;
-      padding: 0.3rem 0;
     }
     section {
       margin-bottom: 3rem;
@@ -101,11 +100,11 @@
     p, ul {
       font-size: 1rem;
       color: var(--text-color);
-      margin-bottom: 0.8rem;
     }
     ul {
       list-style-type: square;
       padding-left: 1.3rem;
+      margin-top: 0.5rem;
     }
     a.pdf-link {
       display: inline-block;
@@ -128,7 +127,7 @@
         padding: 1rem;
       }
       .container {
-        padding: 1.5rem;
+        padding: 1.5rem 1.8rem;
       }
       h1 {
         font-size: 2rem;
@@ -141,12 +140,26 @@
         gap: 1rem;
       }
     }
+    .project-item h3 {
+  position: relative;
+  padding-left: 28px;
+}
+
+.project-item h3::before {
+  content: "■";   /* bullet symbol */
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: var(--primary-color);
+  font-size: 16px;
+}
+
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Manas Nayak</h1>
-    <img src="./profile.jpg" alt="Manas Nayak Profile Picture" class="profile-pic" />
+    <img src="profile.jpg" alt="Manas Nayak Profile Picture" class="profile-pic" />
 
     <nav>
       <a href="#about">About</a>
@@ -162,7 +175,7 @@
     <section id="about">
       <h2>About Me</h2>
       <p>
-        I am a second-year Biomedical Engineering student at SRM University, passionate about merging technology with healthcare to develop innovative solutions that improve patient care and diagnostics.
+        I am a dedicated second-year Biomedical Engineering student at SRM University, passionate about merging technology with healthcare to develop innovative solutions that improve patient care and diagnostics.
       </p>
     </section>
 
@@ -173,15 +186,96 @@
         <li>C programming</li>
         <li>Computer-aided design</li>
         <li>Arduino interfacing and sensor integration</li>
+        <li>Tina-TI</li>
+        <li>PCB designing</li>
+        <li>Circuit designing</li>
+        <li>ORCAD</li>
+        <li>EasyEDA</li>
+        <li>Microcontroller</li>
+        <li>Fusion 360</li>
       </ul>
     </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>Pulse Oximeter:</strong> Developed a real-time pulse oximeter using Arduino Uno R3 to monitor heart rate and oxygen saturation.</li>
-        <li><strong>Door Security Alarm System:</strong> Created a security system using IR sensors to detect unauthorized entry.</li>
-      </ul>
+<section id="projects">
+  <h2>Projects</h2>
+
+  <!-- Project 1 -->
+  <div class="project-item">
+    <h3>Pulse Oximeter</h3>
+    <p>
+      Developed a real-time pulse oximeter using Arduino Uno R3 to monitor heart rate (BPM)
+      and blood oxygen saturation (SpO₂).
+    </p>
+  </div>
+
+  <!-- Project 2 -->
+  <div class="project-item">
+    <h3>Door Security Alarm System</h3>
+    <p>
+      Designed and implemented an IR sensor–based door security alarm system to detect
+      unauthorized entry and trigger alerts.
+    </p>
+  </div>
+
+  <!-- Project 3 -->
+  <div class="project-item">
+    <h3>Automated Plant Watering System</h3>
+    <p>
+      Developed an automated plant watering system using an Arduino and a moisture sensor.
+      A 5V single-channel relay is used to control a 9V DC motor for watering plants based
+      on soil moisture levels.
+    </p>
+    <p>
+      <strong>Components Used:</strong>
+      Arduino, Moisture Sensor, 5V 1-Channel Relay Module, 9V DC Motor
+    </p>
+
+  <!-- Project 4 -->
+  <div class="project-item">
+    <h3>IoT-Based Health Monitoring System</h3>
+    <p>
+      Developed an IoT-based health monitoring system using an ESP32 to measure heart rate
+      and blood oxygen saturation levels. The MAX30102 sensor is used for data acquisition,
+      and real-time values are displayed on a 0.96-inch OLED display. The health data is
+      uploaded to ThingSpeak for remote monitoring.
+    </p>
+    <p>
+      <strong>Components Used:</strong>
+      ESP32, MAX30102 Sensor, 0.96&quot; OLED Display, ThingSpeak Cloud Platform
+    </p>
+
+  <!-- Project 5 -->
+  <div class="project-item">
+    <h3>Body Posture Detection System</h3>
+    <p>
+      Developed a body posture detection system using a flex sensor and ESP32 to identify
+      good and bad posture. The system activates a buzzer when incorrect posture is detected,
+      and posture status is displayed through serial output in the Arduino IDE.
+    </p>
+    <p>
+      <strong>Components Used:</strong>
+      ESP32, Flex Sensor, Buzzer
+    </p>
+
+  <!-- Project 6 -->
+<div class="project-item">
+  <h3>Ultrasonic Distance Alert System</h3>
+  <p>
+    Developed a distance alert system using an ultrasonic sensor and Arduino Uno R3 to
+    measure the distance of nearby objects. A buzzer provides an alert when an object
+    comes within a predefined range, and the measured distance is displayed on an I2C LCD.
+  </p>
+  <p>
+    <strong>Components Used:</strong>
+    Arduino Uno R3, Ultrasonic Sensor, Buzzer, I2C LCD Display
+  </p>
+</div>
+
+  </div>
+
+</section>
+
+
     </section>
 
     <section id="certifications">
@@ -190,20 +284,34 @@
       <div class="certificate-item">
         <h3>Reuse and Remodel Product Development (Mechanical Dept., SRM University)</h3>
         <p>Certificate awarded for successful completion of project on reuse and remodeling products.</p>
-        <a href="./remodel-certificate1.pdf" target="_blank" rel="noopener noreferrer" class="pdf-link">View Remodel Certificate 1 (PDF)</a>
+        <a href="remodel-certificate1.pdf" target="_blank" rel="noopener noreferrer" class="pdf-link">View Remodel Certificate 1 (PDF)</a>
       </div>
       
       <div class="certificate-item">
         <h3>Reuse and Remodel Product Development - Workshop Participation</h3>
         <p>Participation certificate for the mechanical workshop on reuse and remodeling.</p>
-        <a href="./remodel-certificate2.pdf" target="_blank" rel="noopener noreferrer" class="pdf-link">View Remodel Certificate 2 (PDF)</a>
+        <a href="remodel-certificate2.pdf" target="_blank" rel="noopener noreferrer" class="pdf-link">View Remodel Certificate 2 (PDF)</a>
       </div>
 
       <div class="certificate-item">
         <h3>100 Days of Code: Python Bootcamp (Udemy)</h3>
         <p>Completed an intensive Python programming bootcamp focusing on practical coding skills.</p>
-        <a href="./python-certificate.pdf" target="_blank" rel="noopener noreferrer" class="pdf-link">View Python Certificate (PDF)</a>
+        <a href="python-certificate.pdf" target="_blank" rel="noopener noreferrer" class="pdf-link">View Python Certificate (PDF)</a>
       </div>
+
+      <div class="certificate-item">
+  <h3>National Workshop on Development and Validation of Medical Devices</h3>
+   <p>
+    Certificate of participation in the National Workshop on Development and Validation of Medical Devices,
+    conducted as a pre-conference workshop of ACPCON 2025, organized in collaboration with SRM Directorate of
+    Entrepreneurship & Innovation (DEI) and Centre for Clinical Pharmacology at SRM Medical College Hospital &
+    Research Centre, Chennai.
+  </p>
+  <a href="medical-device-workshop-certificate.pdf" target="_blank" rel="noopener noreferrer" class="pdf-link">
+    View Workshop Certificate (PDF)
+  </a>
+</div>
+
     </section>
 
     <section id="achievements">
@@ -219,6 +327,8 @@
         <li>Exploring healthcare technologies and biomedical trends</li>
         <li>Sketching and creative digital design</li>
         <li>Reading science fiction and biomedical research articles</li>
+        <li>Design & Prototyping</li>
+        <li>Exploring biomedical engineering concepts and real-world medical devices</li>
       </ul>
     </section>
 
@@ -233,30 +343,17 @@
   <script>
     // Dark Mode Toggle
     const toggle = document.getElementById("darkModeToggle");
-    if (toggle) {
-      toggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        const isDark = document.body.classList.contains("dark-mode");
-        toggle.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
-        localStorage.setItem("darkMode", isDark);
-      });
-
-      // Load saved preference
-      if (localStorage.getItem("darkMode") === "true") {
-        document.body.classList.add("dark-mode");
-        toggle.textContent = "☀️ Light Mode";
-      }
-    }
-
-    // Error checking for images
-    window.addEventListener('load', function() {
-      document.querySelectorAll('img').forEach(img => {
-        if (!img.complete || img.naturalWidth === 0) {
-          console.error('Image failed to load:', img.src);
-          img.alt = 'Failed to load image'; // Fallback text
-        }
-      });
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      toggle.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
+      localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
     });
+
+    // Load saved preference
+    if (localStorage.getItem("darkMode") === "true") {
+      document.body.classList.add("dark-mode");
+      toggle.textContent = "☀️ Light Mode";
+    }
   </script>
 </body>
 </html>
