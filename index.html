@@ -414,6 +414,68 @@ section::before {
 section {
   animation: idleFloat 6s ease-in-out infinite alternate;
 }
+/* ===== Fix profile image on mobile ===== */
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+}
+h1 {
+  background: linear-gradient(
+    90deg,
+    #38bdf8,
+    #2563eb
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  margin: 0.6rem auto 0;
+  width: 80px;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--primary),
+    transparent
+  );
+}
+@media (max-width: 600px) {
+  section {
+    margin-bottom: 3.8rem;
+  }
+
+  nav {
+    row-gap: 0.8rem;
+  }
+}
+.project-item:active {
+  background: rgba(56,189,248,0.12);
+  transform: scale(0.98);
+}
+#contact p {
+  margin-bottom: 0.6rem;
+}
+
+#contact a {
+  font-weight: 600;
+}
+.profile-pic:hover {
+  box-shadow:
+    0 0 0 4px rgba(56,189,248,0.15),
+    0 20px 40px rgba(0,0,0,0.5);
+}
 
 
 </style>
